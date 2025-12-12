@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fondo principal (Arena suave) */
+  --color-brand-bg: #F0EBD8;
+  
+  /* Marrón Oscuro (Texto principal, Rocas oscuras) */
+  --color-brand-brown: #5A3518;
+  
+  /* Marrón Medio (Para íconos o textos secundarios) */
+  --color-brand-brown-light: #633C1D;
+  
+  /* Terracota/Ladrillo (Ideal para Botones/Call to Action) */
+  --color-brand-terracotta: #B76239;
+  
+  /* Ocre/Dorado (Para detalles, estrellas de reviews, sol) */
+  --color-brand-gold: #D3A04D;
+  
+  /* Verde Oliva (Vegetación, bordes sutiles) */
+  --color-brand-olive: #989052;
+
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Oswald", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--color-brand-bg);
+  color: var(--color-brand-brown);
+}
