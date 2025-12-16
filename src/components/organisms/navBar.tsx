@@ -27,7 +27,7 @@ export const Navbar = () => {
     return (
         <nav
             className={cn(
-                // Clases base
+                // Clase base
                 "fixed w-full z-50 transition-all duration-300 ease-in-out border-b",
 
                 // ESTADO 1: Scrolled

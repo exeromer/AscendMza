@@ -33,19 +33,19 @@ export const Hero = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6">
-          <Button variant="primary"             
+          <Button variant="primary"            
           className="text-lg px-8 py-3 border-brand-bg text-brand-bg hover:bg-brand-bg hover:text-brand-brown flex items-center gap-2">
             <LocationPointIcon className="w-5 h-5" />
             Reservar Aventura
           </Button>
           
-          <Button 
+            <Button 
             variant="outline" 
             className="text-lg px-8 py-3 border-brand-bg text-brand-bg hover:bg-brand-bg hover:text-brand-brown flex items-center gap-2"
-          >
+            onClick={() => document.getElementById('experiencias')?.scrollIntoView({ behavior: 'smooth' })}>
             <LocationIcon className="w-5 h-5" />
             Conocer Rutas
-          </Button>
+            </Button>
         </div>
 
       </div>
