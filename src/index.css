@@ -1,23 +1,32 @@
 @import "tailwindcss";
+@import "tailwindcss-animated";
 
 @theme {
-  /* Fondo principal (Arena suave) */
-  --color-brand-bg: #f7f7f5;
+  /* Fondo Arena Clara (Cliente) - Para secciones generales */
+  --color-brand-bg: #F4F1EC;
   
-  /* Marrón Oscuro (Texto principal, Rocas oscuras) */
-  --color-brand-brown: #5A3518;
+  /* Azul Montaña Profundo (Cliente) - Reemplaza al marrón antiguo en Títulos */
+  --color-brand-brown: #1E2F4D;
   
-  /* Marrón Medio (Para íconos o textos secundarios) */
-  --color-brand-brown-light: #633C1D;
-  
-  /* Terracota/Ladrillo (Ideal para Botones/Call to Action) */
+  /* Marrón Roca (Cliente) - Específico para el fondo del Footer */
+  --color-brand-dark: #4A3728;
+
+  /* --- ACENTOS --- */
+  /* Terracota/Ladrillo (Tu elección) - Para Botones Principales */
   --color-brand-terracotta: #B76239;
+
+  /* Dorado Andino (Cliente) - Para Estrellas, Bordes y Textos destacados */
+  --color-brand-gold: #D6A44A;
+
+  /* Verde Cordillera (Cliente) - Para Íconos de actividad (tiempo, altura) */
+  --color-brand-green: #6F7F4C;
   
-  /* Ocre/Dorado (Para detalles, estrellas de reviews, sol) */
-  --color-brand-gold: #D3A04D;
+  /* Marrón Suave/Piedra (Footer) */
+  --color-brand-footer-bg: #4d3e32;
   
-  /* Verde Oliva (Vegetación, bordes sutiles) */
-  --color-brand-olive: #989052;
+  /* --- TEXTOS --- */
+  /* Gris Azulado - Para párrafos largos (más legible que el negro puro) */
+  --color-brand-text-gray: #4b5c76;
 
   --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Oswald", ui-sans-serif, system-ui, sans-serif;

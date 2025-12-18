@@ -1,18 +1,18 @@
-import { Navbar } from './components/organisms/navBar';
-import { Hero } from './components/organisms/hero';
-import { Experiences } from './components/organisms/experiences';
-import { WhyUs } from './components/organisms/whyUs';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Home } from '../src/components/templates/home';
+import { ActivityDetail } from '../src/components/templates/activityDetail';
+import { ScrollToTop } from '../src/utils/scrollToTop'; 
 
 function App() {
   return (
-    <div className="min-h-screen bg-brand-bg">
-      <Navbar />
-      <main>
-        <Hero />
-        <WhyUs />
-        <Experiences />
-      </main>
-    </div>
+    <BrowserRouter>
+      <ScrollToTop />       
+      <Routes>
+        {/* Ruta Principal */}
+        <Route path="/" element={<Home />} />
+        <Route path="/experiencia/:slug" element={<ActivityDetail />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

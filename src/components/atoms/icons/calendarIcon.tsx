@@ -7,7 +7,7 @@ export const CalendarIcon = ({ className }: IconProps) => (
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
         <g id="SVGRepo_iconCarrier">
-            <path fillRule="evenodd" clipRule="evenodd" d="M8.25 3.75H6.75V5.25H4.5L3.75 6V19.5L4.5 20.25H19.5L20.25 19.5V6L19.5 5.25H17.25V3.75H15.75V5.25H8.25V3.75ZM5.25 9.75V6.75H18.75V9.75H5.25ZM5.25 11.25V18.75H18.75V11.25H5.25Z" fill="#080341">
+            <path fillRule="evenodd" clipRule="evenodd" d="M8.25 3.75H6.75V5.25H4.5L3.75 6V19.5L4.5 20.25H19.5L20.25 19.5V6L19.5 5.25H17.25V3.75H15.75V5.25H8.25V3.75ZM5.25 9.75V6.75H18.75V9.75H5.25ZM5.25 11.25V18.75H18.75V11.25H5.25Z" fill="currentColor">
             </path>
         </g>
     </svg>
