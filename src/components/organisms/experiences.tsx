@@ -10,30 +10,30 @@ export const Experiences = () => {
     const activities = [
         {
             id: 1,
-            slug: "trekking-aconcagua",
-            title: "Trekking Aconcagua",
+            slug: "cerro-banos",
+            title: "Cerro Baños",
             imageSrc: "/trekking.jpg",
-            duration: "15 Días",
-            difficulty: "Alta / Experto",
-            season: "Noviembre - Marzo"
+            duration: "8 Horas",
+            difficulty: "Media",
+            season: "Todo el año",
         },
         {
             id: 2,
-            slug: "valle-lagrimas",
-            title: "Valle de las Lágrimas",
+            slug: "cerro-manos",
+            title: "Cerro Manos",
             imageSrc: "/valle.jpg",
-            duration: "3 Días",
-            difficulty: "Media",
-            season: "Octubre - Abril"
+            duration: "6 Horas",
+            difficulty: "Media – Baja",
+            season: "Todo el año",
         },
         {
             id: 3,
-            slug: "cruce-andes",
-            title: "Cruce de los Andes",
+            slug: "escalada-mono-largo",
+            title: "Escalada Deportiva",
             imageSrc: "/cruce.jpg",
-            duration: "6 Días",
-            difficulty: "Media / Alta",
-            season: "Enero - Febrero"
+            duration: "6 a 8 Horas",
+            difficulty: "Adaptable",
+            season: "Todo el año",
         },
         {
             id: 4,
