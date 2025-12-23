@@ -83,7 +83,7 @@ export const Experiences = () => {
                         </p>
                     </div>
                 </Reveal>
-
+                
                 <div className="relative w-full">
 
                     {/* BOTÓN IZQUIERDA (Oculto en móvil, visible en md) */}
@@ -103,7 +103,7 @@ export const Experiences = () => {
                         {activities.map((activity, index) => (
                             <div
                                 key={activity.id}
-                                className="shrink-0 snap-center md:snap-start w-[85%] sm:w-[60%] md:w-[45%] lg:w-[31%] flex"
+                                className="shrink-0 snap-center md:snap-start w-[85%] md:w-[45%] lg:w-[31%] flex"
                             >
                                 <Reveal
                                     className="w-full h-full"

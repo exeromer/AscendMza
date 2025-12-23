@@ -55,6 +55,15 @@ export const ActivityDetail = () => {
     setCurrentImageIndex((prev) => (prev - 1 + activity.images.length) % activity.images.length);
   };
 
+  const sideImages = activity.images.slice(1, 5);
+  const sideCount = sideImages.length;
+  const getSideGridClass = (count: number) => {
+    if (count <= 1) return "grid-cols-1 grid-rows-1";
+    if (count === 2) return "grid-cols-1 grid-rows-2";
+    return "grid-cols-2 grid-rows-2";
+  };
+
+  const sideGridClass = getSideGridClass(sideCount);
 
   return (
     <div className="min-h-screen bg-brand-bg flex flex-col font-sans">
@@ -62,39 +71,44 @@ export const ActivityDetail = () => {
 
       {/* --- 1. HERO SECTION --- */}
       <div className="pt-22 md:pt-22 w-full px-4 md:px-0">
-        <div className="max-w-480 mx-auto grid grid-cols-1 md:grid-cols-4 h-[50vh] md:h-[60vh] rounded-xl md:rounded-none overflow-hidden cursor-pointer relative animate-fade animate-duration-1000 animate-ease-out">
+        <div className="grid grid-cols-1 md:grid-cols-4 h-[50vh] md:h-[60vh] rounded-none overflow-hidden cursor-pointer relative animate-fade animate-duration-1000 animate-ease-out gap-1">
 
-          {/* Imagen Principal (Grande Izquierda) */}
+          {/*  Imagen Principal */}
           <div
-            className="relative md:col-span-2 md:row-span-2 h-full overflow-hidden group"
+            className="relative md:col-span-2 h-full overflow-hidden group"
             onClick={() => openLightbox(0)}
           >
             <img
               src={activity.images[0]}
               alt="Principal"
-              className="w-full h-full object-cover brightness-95 group-hover:brightness-110 transition-all duration-900 hover:scale-105"
+              className="absolute inset-0 w-full h-full object-cover brightness-95 group-hover:brightness-110 transition-all duration-900 hover:scale-105"
             />
           </div>
 
-          {/* Imágenes Secundarias - Solo se muestran si hay suficientes */}
-          <div className="hidden md:grid md:col-span-2 grid-cols-2 h-full">
-            {activity.images.slice(1, 5).map((img, index) => (
+          {/* Contenedor Lateral Inteligente */}
+          <div className={cn(
+            "hidden md:grid md:col-span-2 h-full gap-1",
+            sideGridClass
+          )}>
+            {sideImages.map((img, index) => (
               <div
                 key={index}
-                className="relative h-full overflow-hidden group"
+                className="relative h-full w-full overflow-hidden group"
                 onClick={() => openLightbox(index + 1)}
               >
                 <img
                   src={img}
                   alt={`Detalle ${index}`}
-                  className="w-full h-full object-cover brightness-95 group-hover:brightness-110 transition-all duration-700 hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover brightness-95 group-hover:brightness-110 transition-all duration-700 hover:scale-105"
                 />
               </div>
             ))}
           </div>
+
+          {/* Botón Ver Fotos */}
           <button
             onClick={(e) => { e.stopPropagation(); openLightbox(0); }}
-            className="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-white/90 backdrop-blur-sm text-brand-brown px-4 py-2 rounded-lg text-sm font-bold shadow-lg hover:scale-105 transition-transform flex items-center gap-2 z-10"
+            className="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-white/90 backdrop-blur-sm text-brand-brown px-4 py-2 rounded-lg text-sm font-bold shadow-lg hover:scale-105 transition-transform flex items-center gap-2 z-20"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
             Ver fotos ({activity.images.length})
@@ -112,23 +126,23 @@ export const ActivityDetail = () => {
 
               {/* Breadcrumb & Header  */}
               <div className="mb-6 border-b border-gray-200 pb-6 animate-fade-up animate-once animate-duration-700 animate-delay-100 animate-ease-out">
-                <div className="mb-3 text-sm">
-                  <Link to="/" className="text-brand-text-gray hover:text-brand-terracotta transition-colors">Inicio</Link>
-                  <span className="mx-2 text-gray-400">/</span>
-                  <span className="text-brand-brown font-medium">{activity.category}</span>
-                </div>
-                <h1 className="font-display text-4xl md:text-5xl font-bold text-brand-brown uppercase leading-tight mb-3">
-                  {activity.title}
-                </h1>
-                <p className="text-brand-green font-medium flex items-center gap-2 text-lg">
-                  <DiffIcon className="w-5 h-5" /> {activity.location}
-                </p>
+              <div className="mb-3 text-sm text-center lg:text-left">
+                <Link to="/" className="text-brand-text-gray hover:text-brand-terracotta transition-colors">Inicio</Link>
+                <span className="mx-2 text-gray-400">/</span>
+                <span className="text-brand-brown font-medium">{activity.category}</span>
+              </div>
+              <h1 className="font-display text-4xl md:text-5xl font-bold text-brand-brown uppercase leading-tight mb-3 text-center lg:text-left">
+                {activity.title}
+              </h1>
+              <p className="text-brand-green font-medium flex items-center justify-center lg:justify-start gap-2 text-lg">
+                <DiffIcon className="w-5 h-5" /> {activity.location}
+              </p>
               </div>
 
               {/* Descripción */}
               <div className="space-y-10">
                 <div className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-out">
-                  <h2 className="font-display text-2xl text-brand-brown font-bold mb-4">Sobre esta experiencia</h2>
+                  <h2 className="font-display text-2xl text-brand-brown font-bold mb-4 text-center">Sobre esta experiencia</h2>
                   <p className="text-brand-text-gray leading-relaxed text-lg whitespace-pre-line">
                     {activity.fullDescription}
                   </p>
@@ -168,7 +182,7 @@ export const ActivityDetail = () => {
 
                 {/* TABS */}
                 <div>
-                  <div className="flex border-b border-gray-200 mb-0 overflow-x-auto no-scrollbar">
+                  <div className="flex border-b border-gray-200 mb-0 overflow-x-auto no-scrollbar justify-center">
                     {['itinerary', 'equipment', 'included'].map((tab) => (
                       <button
                         key={tab}
@@ -187,10 +201,10 @@ export const ActivityDetail = () => {
                     ))}
                   </div>
 
-                  <div className="bg-white p-8 rounded-b-2xl shadow-sm border border-t-0 border-gray-100 min-h-64">
+                  <div className="bg-white p-4 rounded-b-2xl shadow-sm border border-t-0 border-gray-100 min-h-64">
                     {activeTab === 'itinerary' && (
                       <div className="animate-fade-in space-y-8">
-                        <h3 className="font-display text-xl text-brand-brown font-bold">Itinerario Propuesto</h3>
+                        <h3 className="font-display text-2xl text-brand-brown font-bold text-center">Itinerario Propuesto</h3>
                         <div className="relative border-l-2 border-brand-green/20 ml-3 space-y-8">
                           {activity.itinerary.map((item, i) => (
                             <div key={i} className="relative pl-8">
@@ -203,7 +217,7 @@ export const ActivityDetail = () => {
                     )}
                     {activeTab === 'equipment' && (
                       <div className="animate-fade-in">
-                        <h3 className="font-display text-xl text-brand-brown font-bold mb-6">Lista de Equipo</h3>
+                        <h3 className="font-display text-2xl text-brand-brown font-bold mb-6 text-center">Lista de Equipo</h3>
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           {activity.equipment.map((item, i) => (
                             <li key={i} className="flex items-center text-brand-text-gray p-2 hover:bg-gray-50 rounded-lg transition-colors">
@@ -218,7 +232,7 @@ export const ActivityDetail = () => {
                     )}
                     {activeTab === 'included' && (
                       <div className="animate-fade-in">
-                        <h3 className="font-display text-xl text-brand-brown font-bold mb-6">Incluido en el precio</h3>
+                        <h3 className="font-display text-2xl text-brand-brown font-bold mb-6 text-center">Incluido en el precio</h3>
                         <div className="grid gap-4">
                           {activity.included.map((item, i) => (
                             <li key={i} className="flex items-start p-4 border border-gray-100 rounded-xl hover:border-brand-terracotta/30 hover:shadow-sm transition-all bg-white">

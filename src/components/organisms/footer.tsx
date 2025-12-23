@@ -3,8 +3,8 @@ export const Footer = () => {
     <footer className="bg-brand-footer-bg text-white py-12 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
         
-        {/* Columna 1 */}
-        <div>
+        {/* Columna 1: Info General */}
+        <div className="flex flex-col items-center text-center md:items-start md:text-left">
           <h3 className="font-display text-2xl font-bold mb-4 tracking-wider">
             ASCEND<span className="text-brand-terracotta">MZA</span>
           </h3>
@@ -13,20 +13,20 @@ export const Footer = () => {
           </p>
         </div>
 
-        {/* Columna 2 */}
-        <div>
+        {/* Columna 2: Links */}
+        <div className="flex flex-col items-center text-center md:items-start md:text-left">
           <h4 className="font-bold mb-6 uppercase text-lg tracking-widest text-brand-terracotta">Explorar</h4>
-          <ul className="space-y-3 text-gray-300 text-sm">
+          <ul className="space-y-3 text-gray-300 text-sm flex flex-col items-center md:items-start">
             <li><a href="#inicio" className="hover:text-white hover:translate-x-1 transition-all inline-block">Inicio</a></li>
             <li><a href="#experiencias" className="hover:text-white hover:translate-x-1 transition-all inline-block">Aventuras</a></li>
             <li><a href="#nosotros" className="hover:text-white hover:translate-x-1 transition-all inline-block">Nosotros</a></li>
           </ul>
         </div>
 
-        {/* Columna 3 */}
-        <div>
+        {/* Columna 3: Contacto */}
+        <div className="flex flex-col items-center text-center md:items-start md:text-left">
           <h4 className="font-bold mb-6 uppercase text-lg tracking-widest text-brand-terracotta">Contacto</h4>
-          <ul className="space-y-3 text-gray-300 text-sm">
+          <ul className="space-y-3 text-gray-300 text-sm flex flex-col items-center md:items-start">
             <li className="flex items-center gap-2">
                 <span>📧</span> info@ascendmza.com
             </li>

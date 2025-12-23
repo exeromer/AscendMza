@@ -18,7 +18,7 @@ export const ActivityCard = ({ title, imageSrc, duration, slug, difficulty, seas
   return (
     <div className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-brand-brown/10 flex flex-col h-full">
       {/* 1. IMAGEN */}
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative w-full aspect-4/3 overflow-hidden">
         <img
           src={imageSrc}
           alt={title}
@@ -29,7 +29,7 @@ export const ActivityCard = ({ title, imageSrc, duration, slug, difficulty, seas
       </div>
 
       {/* 2. CONTENIDO */}
-      <div className="p-6 flex flex-col grow">
+      <div className="p-6 flex flex-col grow justify-between">
 
         {/* Título */}
         <h3 className="font-display text-2xl text-brand-brown font-bold mb-4 group-hover:text-brand-terracotta transition-colors">
