@@ -1,14 +1,16 @@
-import type { AnchorHTMLAttributes, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
+import type { LinkProps } from 'react-router-dom';
 import { cn } from '@/utils/utils';
 
-interface NavLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+interface NavLinkProps extends LinkProps {
   children: ReactNode;
   active?: boolean;
 }
 
 export const NavLink = ({ children, className, active, ...props }: NavLinkProps) => {
   return (
-    <a 
+    <Link 
       className={cn(
         "font-sans font-medium text-brand-brown hover:text-brand-terracotta transition-colors text-base cursor-pointer",
         active && "text-brand-terracotta font-bold", 
@@ -17,6 +19,6 @@ export const NavLink = ({ children, className, active, ...props }: NavLinkProps)
       {...props}
     >
       {children}
-    </a>
+    </Link>
   );
 };

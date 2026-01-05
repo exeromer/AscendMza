@@ -1,6 +1,7 @@
 import { Button } from '../atoms/button';
 import { LocationIcon } from '../atoms/icons/locationIcon';
 import { LocationPointIcon } from '../atoms/icons/locationPointIcon';
+import { getWhatsAppUrl, getReservationMessage } from '../../utils/wpp';
 
 export const Hero = () => {
   return (
@@ -33,11 +34,12 @@ export const Hero = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 animate-fade-up animate-delay-700 animate-duration-1000">
-          <Button variant="primary" className="text-lg px-8 py-3 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all">
+          <Button variant="primary" className="text-lg px-8 py-3 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
+            onClick={() => window.open(getWhatsAppUrl(getReservationMessage()), '_blank')}
+          >
             <LocationPointIcon className="w-5 h-5" />
             Reservar Aventura
           </Button>
-
           <Button
             variant="outline"
             className="text-lg px-8 py-3 border-brand-bg text-brand-bg hover:bg-brand-bg hover:text-brand-brown flex items-center gap-2"

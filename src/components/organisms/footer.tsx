@@ -1,8 +1,10 @@
+import { NavLink } from "../atoms/navLink";
+
 export const Footer = () => {
   return (
     <footer className="bg-brand-footer-bg text-white py-12 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
-        
+
         {/* Columna 1: Info General */}
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
           <h3 className="font-display text-2xl font-bold mb-4 tracking-wider">
@@ -17,9 +19,9 @@ export const Footer = () => {
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
           <h4 className="font-bold mb-6 uppercase text-lg tracking-widest text-brand-terracotta">Explorar</h4>
           <ul className="space-y-3 text-gray-300 text-sm flex flex-col items-center md:items-start">
-            <li><a href="#inicio" className="hover:text-white hover:translate-x-1 transition-all inline-block">Inicio</a></li>
-            <li><a href="#experiencias" className="hover:text-white hover:translate-x-1 transition-all inline-block">Aventuras</a></li>
-            <li><a href="#nosotros" className="hover:text-white hover:translate-x-1 transition-all inline-block">Nosotros</a></li>
+            <li><NavLink to="/"  className="hover:text-white hover:translate-x-1 transition-all inline-block">Inicio</NavLink></li>
+            <li><NavLink to="/#experiencias" className="hover:text-white hover:translate-x-1 transition-all inline-block">Aventuras</NavLink></li>
+            <li><NavLink to="/#reviews" className="hover:text-white hover:translate-x-1 transition-all inline-block">Nosotros</NavLink></li>
           </ul>
         </div>
 
@@ -28,18 +30,18 @@ export const Footer = () => {
           <h4 className="font-bold mb-6 uppercase text-lg tracking-widest text-brand-terracotta">Contacto</h4>
           <ul className="space-y-3 text-gray-300 text-sm flex flex-col items-center md:items-start">
             <li className="flex items-center gap-2">
-                <span>📧</span> info@ascendmza.com
+              <span>📧</span> info@ascendmza.com
             </li>
             <li className="flex items-center gap-2">
-                <span>📱</span> +54 9 261 123 4567
+              <span>📱</span> +54 9 261 123 4567
             </li>
             <li className="flex items-center gap-2">
-                <span>📍</span> Mendoza, Argentina
+              <span>📍</span> Mendoza, Argentina
             </li>
           </ul>
         </div>
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-white/10 text-center text-xs text-gray-400">
         © {new Date().getFullYear()} Ascend Mza. Todos los derechos reservados.
       </div>

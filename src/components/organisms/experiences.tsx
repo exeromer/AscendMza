@@ -1,60 +1,28 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ActivityCard } from '../molecules/activityCard';
 import { ArrowLeftIcon } from '../atoms/icons/arrowLeftIcon';
 import { ArrowRightIcon } from '../atoms/icons/arrowRightIcon';
+import { activitiesData } from '@/data/activityData';
 import { Reveal } from '../atoms/reveal';
+import { cn } from '@/utils/utils';
 
 export const Experiences = () => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
+    const [activeCategory, setActiveCategory] = useState<'Trekking' | 'Escalada'>('Trekking');
 
-    const activities = [
-        {
-            id: 1,
-            slug: "cerro-banos",
-            title: "Cerro Baños",
-            imageSrc: "/trekking.jpg",
-            duration: "8 Horas",
-            difficulty: "Media",
-            season: "Todo el año",
-        },
-        {
-            id: 2,
-            slug: "cerro-manos",
-            title: "Cerro Manos",
-            imageSrc: "/valle.jpg",
-            duration: "6 Horas",
-            difficulty: "Media – Baja",
-            season: "Todo el año",
-        },
-        {
-            id: 3,
-            slug: "escalada-mono-largo",
-            title: "Escalada Deportiva",
-            imageSrc: "/cruce.jpg",
-            duration: "6 a 8 Horas",
-            difficulty: "Adaptable",
-            season: "Todo el año",
-        },
-        {
-            id: 4,
-            slug: "cerro-arco-nocturno",
-            title: "Cerro Arco Nocturno",
-            imageSrc: "/arco.jpg",
-            duration: "4 Horas",
-            difficulty: "Baja",
-            season: "Todo el año"
-        },
-        {
-            id: 5,
-            slug: "ruta-del-vino",
-            title: "Ruta del Vino & Montaña",
-            imageSrc: "/vino.jpg",
-            duration: "1 Día",
-            difficulty: "Baja",
-            season: "Todo el año"
+    // Filtramos las actividades según la categoría seleccionada
+    const filteredActivities = activitiesData.filter(
+        (activity) => activity.category === activeCategory
+    );
+
+    // Reseteamos el scroll al cambiar de categoría
+    useEffect(() => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
         }
-    ];
+    }, [activeCategory]);
 
+    
     const scroll = (direction: 'left' | 'right') => {
         if (scrollContainerRef.current) {
             const container = scrollContainerRef.current;
@@ -74,17 +42,43 @@ export const Experiences = () => {
             <div className="max-w-7xl mx-auto relative group/slider">
 
                 <Reveal>
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-10">
                         <h2 className="font-display text-4xl md:text-5xl text-brand-brown font-bold mb-4">
                             Nuestras <span className="text-brand-terracotta">Aventuras</span>
                         </h2>
-                        <p className="font-sans text-brand-text-gray text-lg max-w-2xl mx-auto">
+                        <p className="font-sans text-brand-text-gray text-lg max-w-2xl mx-auto mb-8">
                             Seleccionamos las mejores rutas de Mendoza para desafiar tus límites.
                         </p>
+
+                        {/* --- SELECTOR DE CATEGORÍA (TABS) --- */}
+                        <div className="inline-flex bg-white p-1 rounded-xl shadow-sm border border-gray-100 mb-4">
+                            <button
+                                onClick={() => setActiveCategory('Trekking')}
+                                className={cn(
+                                    "px-6 py-2 rounded-lg text-sm font-bold uppercase tracking-wide transition-all",
+                                    activeCategory === 'Trekking'
+                                        ? "bg-brand-brown text-white shadow-md"
+                                        : "text-gray-500 hover:text-brand-brown hover:bg-gray-50"
+                                )}
+                            >
+                                Trekking
+                            </button>
+                            <button
+                                onClick={() => setActiveCategory('Escalada')}
+                                className={cn(
+                                    "px-6 py-2 rounded-lg text-sm font-bold uppercase tracking-wide transition-all",
+                                    activeCategory === 'Escalada'
+                                        ? "bg-brand-brown text-white shadow-md"
+                                        : "text-gray-500 hover:text-brand-brown hover:bg-gray-50"
+                                )}
+                            >
+                                Escalada
+                            </button>
+                        </div>
                     </div>
                 </Reveal>
                 
-                <div className="relative w-full">
+                <div className="relative w-full min-h-[450px]:">
 
                     {/* BOTÓN IZQUIERDA (Oculto en móvil, visible en md) */}
                     <button
@@ -100,26 +94,19 @@ export const Experiences = () => {
                         className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide w-full justify-start scroll-px-4 px-4 md:px-0"
                         style={{ scrollBehavior: 'smooth' }}
                     >
-                        {activities.map((activity, index) => (
+                        {filteredActivities.map((activity) => (
                             <div
                                 key={activity.id}
-                                className="shrink-0 snap-center md:snap-start w-[85%] md:w-[45%] lg:w-[31%] flex"
+                                className="shrink-0 snap-center md:snap-start w-[85%] sm:w-[60%] md:w-[45%] lg:w-[31%] flex animate-fade animate-duration-500 animate-ease-out"
                             >
-                                <Reveal
-                                    className="w-full h-full"
-                                    animation="animate-fade-down animate-ease-in"
-                                    duration="animate-duration-1000"
-                                    style={{ animationDelay: `${index * 150}ms` }}
-                                >
-                                    <ActivityCard
-                                        slug={activity.slug}
-                                        title={activity.title}
-                                        imageSrc={activity.imageSrc}
-                                        duration={activity.duration}
-                                        difficulty={activity.difficulty}
-                                        season={activity.season}
-                                    />
-                                </Reveal>
+                                <ActivityCard
+                                    slug={activity.slug}
+                                    title={activity.title}
+                                    imageSrc={activity.images[0]} // Usamos la primera imagen del array
+                                    duration={activity.duration}
+                                    difficulty={activity.difficulty}
+                                    season={activity.season}
+                                />
                             </div>
                         ))}
                     </div>
@@ -136,7 +123,7 @@ export const Experiences = () => {
 
                 {/* Indicadores móviles*/}
                 <div className="flex justify-center md:hidden gap-2 mt-2">
-                    {activities.map((_, index) => (
+                    {filteredActivities.map((_, index) => (
                         <div key={index} className="w-2 h-2 rounded-full bg-brand-brown/20"></div>
                     ))}
                 </div>

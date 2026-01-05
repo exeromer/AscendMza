@@ -4,11 +4,17 @@ import { NavLink } from '../atoms/navLink';
 import { MenuIcon } from '../atoms/icons/menuIcon';
 import { CloseIcon } from '../atoms/icons/closeIcon';
 import { cn } from '@/utils/utils';
+import { Link } from 'react-router-dom';
+import { getWhatsAppUrl, getReservationMessage } from '@/utils/wpp';
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
+    const handleReserveClick = () => {
+        const url = getWhatsAppUrl(getReservationMessage());
+        window.open(url, '_blank');
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -42,22 +48,24 @@ export const Navbar = () => {
                 <div className="flex justify-between items-center h-14 transition-all duration-300">
                     {/* LOGO */}
                     <div className="shrink-0 flex items-center">
-                        <a href="#">
+                        <Link to="/">
                             <img
                                 src="/logo-ascend.png"
                                 alt="Ascend Mza Logo"
                                 className={cn("w-auto object-contain transition-all duration-300", isScrolled ? "h-12" : "h-16")}
                             />
-                        </a>
+                        </Link>
                     </div>
 
                     {/* MENU DESKTOP */}
                     <div className="hidden md:flex space-x-8 items-center">
-                        <NavLink href="#inicio">Inicio</NavLink>
-                        <NavLink href="#experiencias">Experiencias</NavLink>
-                        <NavLink href="#nosotros">Nosotros</NavLink>
+                        <NavLink to="/">Inicio</NavLink>
+                        <NavLink to="/#experiencias">Experiencias</NavLink>
+                        
+                        {/* El botón Nosotros lleva a reviews */}
+                        <NavLink to="/#reviews">Nosotros</NavLink>
 
-                        <Button onClick={() => console.log("Reservando...")}>
+                        <Button onClick={handleReserveClick}>
                             Reservar
                         </Button>
                     </div>
@@ -78,9 +86,9 @@ export const Navbar = () => {
             {isOpen && (
                 <div className="md:hidden bg-brand-bg border-t border-brand-brown/10 h-screen absolute w-full top-full left-0">
                     <div className="px-4 pt-8 pb-3 space-y-6 flex flex-col items-center text-center">
-                        <NavLink href="#inicio" onClick={toggleMenu} className="text-2xl font-display">Inicio</NavLink>
-                        <NavLink href="#experiencias" onClick={toggleMenu} className="text-2xl font-display">Experiencias</NavLink>
-                        <NavLink href="#nosotros" onClick={toggleMenu} className="text-2xl font-display">Nosotros</NavLink>
+                        <NavLink to="/" onClick={toggleMenu} className="text-2xl font-display">Inicio</NavLink>
+                        <NavLink to="/#experiencias" onClick={toggleMenu} className="text-2xl font-display">Experiencias</NavLink>
+                        <NavLink to="/#whyUs" onClick={toggleMenu} className="text-2xl font-display">Nosotros</NavLink>
 
                         <Button className="w-full max-w-xs mt-8 py-3 text-lg">
                             Reservar Aventura

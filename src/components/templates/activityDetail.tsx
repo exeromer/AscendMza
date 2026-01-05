@@ -10,6 +10,7 @@ import { DiffIcon } from '../atoms/icons/diffIcon';
 import { CalendarIcon } from '../atoms/icons/calendarIcon';
 import { cn } from '@/utils/utils';
 import { useInView } from '@/utils/useInView';
+import { getWhatsAppUrl, getReservationMessage, getInquiryMessage } from '@/utils/wpp';
 
 
 export const ActivityDetail = () => {
@@ -69,7 +70,7 @@ export const ActivityDetail = () => {
     <div className="min-h-screen bg-brand-bg flex flex-col font-sans">
       <Navbar />
 
-      {/* --- 1. HERO SECTION --- */}
+      {/* --- HERO SECTION --- */}
       <div className="pt-22 md:pt-22 w-full px-4 md:px-0">
         <div className="grid grid-cols-1 md:grid-cols-4 h-[50vh] md:h-[60vh] rounded-none overflow-hidden cursor-pointer relative animate-fade animate-duration-1000 animate-ease-out gap-1">
 
@@ -85,7 +86,7 @@ export const ActivityDetail = () => {
             />
           </div>
 
-          {/* Contenedor Lateral Inteligente */}
+          {/* Contenedor Lateral */}
           <div className={cn(
             "hidden md:grid md:col-span-2 h-full gap-1",
             sideGridClass
@@ -126,17 +127,17 @@ export const ActivityDetail = () => {
 
               {/* Breadcrumb & Header  */}
               <div className="mb-6 border-b border-gray-200 pb-6 animate-fade-up animate-once animate-duration-700 animate-delay-100 animate-ease-out">
-              <div className="mb-3 text-sm text-center lg:text-left">
-                <Link to="/" className="text-brand-text-gray hover:text-brand-terracotta transition-colors">Inicio</Link>
-                <span className="mx-2 text-gray-400">/</span>
-                <span className="text-brand-brown font-medium">{activity.category}</span>
-              </div>
-              <h1 className="font-display text-4xl md:text-5xl font-bold text-brand-brown uppercase leading-tight mb-3 text-center lg:text-left">
-                {activity.title}
-              </h1>
-              <p className="text-brand-green font-medium flex items-center justify-center lg:justify-start gap-2 text-lg">
-                <DiffIcon className="w-5 h-5" /> {activity.location}
-              </p>
+                <div className="mb-3 text-sm text-center lg:text-left">
+                  <Link to="/" className="text-brand-text-gray hover:text-brand-terracotta transition-colors">Inicio</Link>
+                  <span className="mx-2 text-gray-400">/</span>
+                  <span className="text-brand-brown font-medium">{activity.category}</span>
+                </div>
+                <h1 className="font-display text-4xl md:text-5xl font-bold text-brand-brown uppercase leading-tight mb-3 text-center lg:text-left">
+                  {activity.title}
+                </h1>
+                <p className="text-brand-green font-medium flex items-center justify-center lg:justify-start gap-2 text-lg">
+                  <DiffIcon className="w-5 h-5" /> {activity.location}
+                </p>
               </div>
 
               {/* Descripción */}
@@ -252,23 +253,30 @@ export const ActivityDetail = () => {
             <div className="lg:col-span-1 animate-fade-left animate-once animate-duration-800 animate-delay-300 animate-ease-out lg:animate-fade-up">
               <div className="sticky top-28 bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
                 <div className="mb-8 text-center lg:text-left">
-                  <p className="text-gray-500 text-xs uppercase font-bold tracking-widest mb-2">Precio Total</p>
+                  <p className="text-gray-500 text-xs uppercase font-bold tracking-widest mb-2 text-center lg:text-left">Precio Total</p>
                   <div className="flex items-baseline justify-center lg:justify-start gap-1">
                     <span className="text-4xl font-bold text-brand-brown">{activity.price}</span>
-                    <span className="text-gray-500 font-medium text-sm">/ persona</span>
+                    <span className="text-brand-text-gray font-medium text-sm">/ persona</span>
                   </div>
-                  <div className="mt-4 inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-bold uppercase rounded-full">
-                    Disponibilidad Inmediata
+                  <div className="mt-4 flex justify-center lg:justify-start">
+                    <div className="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-bold uppercase rounded-full">
+                      Disponibilidad Inmediata
+                    </div>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <Button className="w-full py-4 text-lg shadow-brand-terracotta/20 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                  {/* BOTÓN 1: RESERVA */}
+                  <Button
+                    onClick={() => window.open(getWhatsAppUrl(getReservationMessage(activity.title)), '_blank')}
+                    className="w-full py-4 text-lg shadow-brand-terracotta/20 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"
+                  >
                     Reservar Aventura
                   </Button>
 
+                  {/* BOTÓN 2: CONSULTA */}
                   <a
-                    href={`https://wa.me/5492611234567?text=Hola,%20quisiera%20más%20info%20sobre%20${activity.title}`}
+                    href={getWhatsAppUrl(getInquiryMessage(activity.title))}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-full py-3 border-2 border-brand-green text-brand-green font-display font-bold uppercase rounded-lg hover:bg-brand-green hover:text-white transition-all gap-2"

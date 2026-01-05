@@ -27,7 +27,7 @@ export const Reviews = () => {
     ];
 
     return (
-        <section className="py-16 bg-brand-brown text-white relative overflow-hidden">
+        <section id="reviews"className="scroll-mt-24 py-16 px-4 bg-brand-brown text-white relative overflow-hidden">
 
             <div className="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
 
