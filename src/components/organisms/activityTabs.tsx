@@ -23,7 +23,7 @@ export const ActivityTabs = ({ itinerary, equipment, included }: ActivityTabsPro
             key={tab.id}
             onClick={() => setActiveTab(tab.id as 'itinerary' | 'equipment' | 'included')}
             className={cn(
-              "px-8 py-4 font-display font-bold uppercase tracking-wider text-sm transition-all border-b-2 whitespace-nowrap",
+              "cursor-pointer px-8 py-4 font-display font-bold uppercase tracking-wider text-sm transition-all border-b-2 whitespace-nowrap",
               activeTab === tab.id
                 ? "border-brand-terracotta text-brand-terracotta bg-brand-terracotta/5"
                 : "border-transparent text-gray-400 hover:text-brand-brown hover:bg-gray-50"
@@ -35,7 +35,7 @@ export const ActivityTabs = ({ itinerary, equipment, included }: ActivityTabsPro
       </div>
 
       {/* Contenido */}
-      <div className="bg-white p-4 rounded-b-2xl shadow-sm border border-t-0 border-gray-100 min-h-64">
+      <div className=" bg-white p-4 rounded-b-2xl shadow-sm border border-t-0 border-gray-100 min-h-64">
         
         {/* ITINERARIO */}
         {activeTab === 'itinerary' && (

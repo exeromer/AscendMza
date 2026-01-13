@@ -30,7 +30,7 @@ export const Hero = () => {
         </h1>
 
         <p className="font-sans text-gray-200 text-lg md:text-2xl max-w-3xl mb-10 font-light drop-shadow-md animate-fade-up animate-delay-300 animate-duration-1000">
-          Vive la experiencia de alta montaña en Mendoza con el chupete completamente INSIDE.
+          Guías profesionales, seguridad certificada y la inmensidad de la cordillera esperándote.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 animate-fade-up animate-delay-700 animate-duration-1000">

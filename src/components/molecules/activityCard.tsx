@@ -20,7 +20,7 @@ export const ActivityCard = ({ title, imageSrc, duration, slug, difficulty, seas
   const hasImage = imageSrc && imageSrc.trim() !== '';
 
   return (
-    <div className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-brand-brown/10 flex flex-col h-full w-full">
+    <div className="group cursor-pointer bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-brand-brown/10 flex flex-col h-full w-full">
       
       {/* 1. ZONA DE IMAGEN  */}
       <div className="relative w-full aspect-4/3 overflow-hidden bg-gray-100 shrink-0">

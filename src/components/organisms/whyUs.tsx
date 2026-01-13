@@ -34,9 +34,18 @@ export const WhyUs = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Reveal key={index} delay={`animate-delay-${index * 400}`}>
+            <Reveal
+              key={index}
+              delay={`animate-delay-${index * 400}`}
+              // 1. IMPORTANTE: Agregamos className="h-full" aquí para que la animación no colapse la altura
+              className="h-full"
+            >
               <SpotlightCard className="p-8 h-full flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300">
-                <div key={index} className="bg-white p-8 rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center">
+                <div
+                  key={index}
+                  
+                  className="bg-white p-8 rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center h-full w-full"
+                >
                   <div className="mb-6 p-4 bg-brand-bg rounded-full transition-transform group-hover:scale-110 duration-300">
                     {feature.icon}
                   </div>

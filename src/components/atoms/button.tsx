@@ -13,7 +13,7 @@ export const Button = ({
   ...props 
 }: ButtonProps) => {
   //Estilo General
-  const baseStyles = "font-display inline-flex items-center justify-center rounded-md transition-colors uppercase tracking-wider text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+  const baseStyles = "cursor-pointer font-display inline-flex items-center justify-center rounded-md transition-colors uppercase tracking-wider text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
   
   // Estilos específicos
   const variants = {
