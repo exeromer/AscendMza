@@ -52,17 +52,17 @@ export const Navbar = () => {
                             <img
                                 src="/logo-ascend.png"
                                 alt="Ascend Mza Logo"
-                                className={cn("w-auto object-contain transition-all duration-300", isScrolled ? "h-12" : "h-16")}
+                                className={cn("w-auto object-contain transition-all duration-300", isScrolled ? "h-14" : "h-18")}
                             />
                         </Link>
                     </div>
 
                     {/* MENU DESKTOP */}
-                    <div className="hidden md:flex space-x-8 items-center">
+                    <div className="hidden md:flex space-x-12 items-center">
                         <NavLink to="/">Inicio</NavLink>
                         <NavLink to="/#experiencias">Experiencias</NavLink>
                         
-                        {/* El botón Nosotros lleva a reviews */}
+                        {/* El botón Nosotros */}
                         <NavLink to="/#reviews">Nosotros</NavLink>
 
                         <Button onClick={handleReserveClick}>
