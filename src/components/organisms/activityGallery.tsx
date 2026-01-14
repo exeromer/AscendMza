@@ -13,7 +13,7 @@ export const ActivityGallery = ({ images }: ActivityGalleryProps) => {
   // Lógica para el grid lateral inteligente
   const sideImages = images.slice(1, 5);
   const sideCount = sideImages.length;
-  
+
   const getSideGridClass = (count: number) => {
     if (count <= 1) return "grid-cols-1 grid-rows-1";
     if (count === 2) return "grid-cols-1 grid-rows-2";
@@ -48,7 +48,7 @@ export const ActivityGallery = ({ images }: ActivityGalleryProps) => {
       {/* --- HERO GRID --- */}
       <div className="pt-22 md:pt-22 w-full px-4 md:px-0">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 h-[50vh] md:h-[60vh] rounded-xl md:rounded-none overflow-hidden cursor-pointer relative animate-fade animate-duration-1000 animate-ease-out gap-1">
-          
+
           {/* Imagen Principal */}
           <div className="relative md:col-span-2 h-full overflow-hidden group" onClick={() => openLightbox(0)}>
             <img
@@ -88,8 +88,8 @@ export const ActivityGallery = ({ images }: ActivityGalleryProps) => {
           <button className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 z-50" onClick={closeLightbox}>
             <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
-          
-          <button className="absolute left-4 text-white/50 hover:text-white p-4 transition-colors hidden md:block z-50" onClick={prevImage}>
+
+          <button className="absolute left-2 md:left-4 text-white p-2 md:p-4 hover:bg-white/10 rounded-full transition-colors z-110" onClick={prevImage}>
             <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
           </button>
 
@@ -100,7 +100,7 @@ export const ActivityGallery = ({ images }: ActivityGalleryProps) => {
             onClick={(e) => e.stopPropagation()}
           />
 
-          <button className="absolute right-4 text-white/50 hover:text-white p-4 transition-colors hidden md:block z-50" onClick={nextImage}>
+          <button className="absolute right-4 text-white/50 hover:text-white p-4 transition-colors z-50" onClick={nextImage}>
             <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
           </button>
 

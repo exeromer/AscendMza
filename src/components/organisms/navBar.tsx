@@ -3,9 +3,11 @@ import { Button } from '../atoms/button';
 import { NavLink } from '../atoms/navLink';
 import { MenuIcon } from '../atoms/icons/menuIcon';
 import { CloseIcon } from '../atoms/icons/closeIcon';
-import { cn } from '@/utils/utils';
+import { cn } from '../../utils/utils';
 import { Link } from 'react-router-dom';
-import { getWhatsAppUrl, getReservationMessage } from '@/utils/wpp';
+import { getWhatsAppUrl, getReservationMessage } from '../../utils/wpp';
+import { useLanguage } from '../../context/languageContext';
+import { LanguageSelector } from '../atoms/languageSelector';
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +17,7 @@ export const Navbar = () => {
         const url = getWhatsAppUrl(getReservationMessage());
         window.open(url, '_blank');
     };
+    const { t } = useLanguage();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -52,22 +55,23 @@ export const Navbar = () => {
                             <img
                                 src="/logo-ascend.png"
                                 alt="Ascend Mza Logo"
-                                className={cn("w-auto object-contain transition-all duration-300","-ml-2 md:-ml-6", isScrolled ? "h-16" : "h-20")}
+                                className={cn("w-auto object-contain transition-all duration-300", "-ml-2 md:-ml-6", isScrolled ? "h-16" : "h-20")}
                             />
                         </Link>
                     </div>
 
                     {/* MENU DESKTOP */}
                     <div className="hidden md:flex space-x-14 items-center">
-                        <NavLink to="/">Inicio</NavLink>
-                        <NavLink to="/#experiencias">Experiencias</NavLink>
-                        
+                        <NavLink to="/">{t('nav.home')}</NavLink>
+                        <NavLink to="/#experiencias">{t('nav.experiences')}</NavLink>
                         {/* El botón Nosotros */}
-                        <NavLink to="/#reviews">Nosotros</NavLink>
-
-                        <Button onClick={handleReserveClick}>
-                            Reservar
-                        </Button>
+                        <NavLink to="/#reviews">{t('nav.about')}</NavLink>
+                        <div className="flex items-center gap-4">
+                            <LanguageSelector />
+                            <Button onClick={handleReserveClick}>
+                                {t('nav.reserve')}
+                            </Button>
+                        </div>
                     </div>
 
                     {/* BOTÓN HAMBURGUESA MOVILE */}
@@ -86,12 +90,14 @@ export const Navbar = () => {
             {isOpen && (
                 <div className="md:hidden bg-brand-bg border-t border-brand-brown/10 h-screen absolute w-full top-full left-0">
                     <div className="px-4 pt-8 pb-3 space-y-6 flex flex-col items-center text-center">
-                        <NavLink to="/" onClick={toggleMenu} className="text-2xl font-display">Inicio</NavLink>
-                        <NavLink to="/#experiencias" onClick={toggleMenu} className="text-2xl font-display">Experiencias</NavLink>
-                        <NavLink to="/#whyUs" onClick={toggleMenu} className="text-2xl font-display">Nosotros</NavLink>
-
+                        <NavLink to="/" onClick={toggleMenu} className="text-2xl font-display">{t('nav.home')}</NavLink>
+                        <NavLink to="/#experiencias" onClick={toggleMenu} className="text-2xl font-display">{t('nav.experiences')}</NavLink>
+                        <NavLink to="/#whyUs" onClick={toggleMenu} className="text-2xl font-display">{t('nav.about')}</NavLink>
+                        <div className="flex justify-center mt-4 mb-4">
+                            <LanguageSelector />
+                        </div>
                         <Button className="w-full max-w-xs mt-8 py-3 text-lg">
-                            Reservar Aventura
+                            {t('nav.reserve')}
                         </Button>
                     </div>
                 </div>

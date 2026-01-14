@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { DiffIcon } from '../atoms/icons/diffIcon';
+import { useLanguage } from '@/context/languageContext';
 
 interface ActivityHeaderProps {
   category: string;
@@ -8,10 +9,11 @@ interface ActivityHeaderProps {
 }
 
 export const ActivityHeader = ({ category, title, location }: ActivityHeaderProps) => {
+  const { t } = useLanguage();
   return (
     <div className="mb-6 border-b border-gray-200 pb-6 animate-fade-up animate-once animate-duration-700 animate-delay-100 animate-ease-out">
       <div className="mb-3 text-lg text-center lg:text-left">
-        <Link to="/" className="text-brand-text-gray hover:text-brand-terracotta transition-colors">Inicio</Link>
+        <Link to="/" className="text-brand-text-gray hover:text-brand-terracotta transition-colors">{t('detail.crumb.home')}</Link>
         <span className="mx-2 text-gray-400">/</span>
         <span className="text-brand-brown font-medium">{category}</span>
       </div>

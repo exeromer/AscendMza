@@ -5,10 +5,12 @@ import { ArrowRightIcon } from '../atoms/icons/arrowRightIcon';
 import { activitiesData } from '@/data/activityData';
 import { Reveal } from '../atoms/reveal';
 import { cn } from '@/utils/utils';
+import { useLanguage } from '@/context/languageContext';
 
 export const Experiences = () => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const [activeCategory, setActiveCategory] = useState<'Trekking' | 'Escalada'>('Trekking');
+    const {language, t } = useLanguage();
 
     // Filtramos las actividades según la categoría seleccionada
     const filteredActivities = activitiesData.filter(
@@ -22,7 +24,7 @@ export const Experiences = () => {
         }
     }, [activeCategory]);
 
-    
+
     const scroll = (direction: 'left' | 'right') => {
         if (scrollContainerRef.current) {
             const container = scrollContainerRef.current;
@@ -44,10 +46,10 @@ export const Experiences = () => {
                 <Reveal>
                     <div className="text-center mb-10">
                         <h2 className="font-display text-4xl md:text-5xl text-brand-brown font-bold mb-4">
-                            Nuestras <span className="text-brand-terracotta">Aventuras</span>
+                            {t('exp.title.prefix')} <span className="text-brand-terracotta">{t('exp.title.highlight')}</span>
                         </h2>
                         <p className="font-sans text-brand-text-gray text-lg max-w-2xl mx-auto mb-8">
-                            Seleccionamos las mejores rutas de Mendoza para desafiar tus límites.
+                            {t('exp.subtitle')}
                         </p>
 
                         {/* --- SELECTOR DE CATEGORÍA (TABS) --- */}
@@ -61,7 +63,7 @@ export const Experiences = () => {
                                         : "text-gray-500 hover:text-brand-brown hover:bg-gray-50"
                                 )}
                             >
-                                Trekking
+                                {t('exp.tab.trekking')}
                             </button>
                             <button
                                 onClick={() => setActiveCategory('Escalada')}
@@ -72,12 +74,12 @@ export const Experiences = () => {
                                         : "text-gray-500 hover:text-brand-brown hover:bg-gray-50"
                                 )}
                             >
-                                Escalada
+                                {t('exp.tab.climbing')}
                             </button>
                         </div>
                     </div>
                 </Reveal>
-                
+
                 <div className="relative w-full min-h-[450px]:">
 
                     {/* BOTÓN IZQUIERDA (Oculto en móvil, visible en md) */}
@@ -101,11 +103,11 @@ export const Experiences = () => {
                             >
                                 <ActivityCard
                                     slug={activity.slug}
-                                    title={activity.title}
+                                    title={activity.title[language]}
                                     imageSrc={activity.images[0]} // Usamos la primera imagen del array
-                                    duration={activity.duration}
-                                    difficulty={activity.difficulty}
-                                    season={activity.season}
+                                    duration={activity.duration[language]}
+                                    difficulty={activity.difficulty[language]}
+                                    season={activity.season[language]}
                                 />
                             </div>
                         ))}

@@ -4,6 +4,7 @@ import { DiffIcon } from '../atoms/icons/diffIcon';
 import { CalendarIcon } from '../atoms/icons/calendarIcon';
 import { cn } from '@/utils/utils';
 import { useInView } from '@/utils/useInView';
+import { useLanguage } from '@/context/languageContext';
 
 interface ActivityInfoGridProps {
   duration: string;
@@ -14,6 +15,7 @@ interface ActivityInfoGridProps {
 
 export const ActivityInfoGrid = ({ duration, difficulty, season, altitude }: ActivityInfoGridProps) => {
   const [ref, inView] = useInView({ threshold: 0.2 });
+  const { t } = useLanguage();
 
   return (
     <div
@@ -23,12 +25,12 @@ export const ActivityInfoGrid = ({ duration, difficulty, season, altitude }: Act
         inView ? "opacity-100 translate-y-0 filter-none" : "opacity-0 translate-y-8 blur-sm"
       )}
     >
-      <InfoItem icon={<ClockIcon className="w-8 h-8 text-brand-terracotta mb-2" />} label="Duración" value={duration} />
-      <InfoItem icon={<DiffIcon className="w-8 h-8 text-brand-terracotta mb-2" />} label="Dificultad" value={difficulty} />
-      <InfoItem icon={<CalendarIcon className="w-8 h-8 text-brand-terracotta mb-2" />} label="Temporada" value={season} />
+      <InfoItem icon={<ClockIcon className="w-8 h-8 text-brand-terracotta mb-2" />} label={t('detail.label.duration')} value={duration} />
+      <InfoItem icon={<DiffIcon className="w-8 h-8 text-brand-terracotta mb-2" />} label={t('detail.label.difficulty')} value={difficulty} />
+      <InfoItem icon={<CalendarIcon className="w-8 h-8 text-brand-terracotta mb-2" />} label={t('detail.label.season')} value={season} />
       <InfoItem 
         icon={<svg className="w-8 h-8 text-brand-terracotta mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 21h18M5 21V7l8-4 8 4v14" /></svg>} 
-        label="Altura" 
+        label={t('detail.label.altitude')} 
         value={altitude || "N/A"} 
       />
     </div>

@@ -2,8 +2,11 @@ import { Button } from '../atoms/button';
 import { LocationIcon } from '../atoms/icons/locationIcon';
 import { LocationPointIcon } from '../atoms/icons/locationPointIcon';
 import { getWhatsAppUrl, getReservationMessage } from '../../utils/wpp';
+import { useLanguage } from '@/context/languageContext';
 
 export const Hero = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="inicio" className="relative w-full h-screen overflow-hidden">
 
@@ -14,6 +17,7 @@ export const Hero = () => {
         muted
         loop
         playsInline
+        poster="/fondoHero.png"
       >
         <source src="/fondoHero.mp4" type="video/mp4" />
         Tu navegador no soporta el tag de video.
@@ -25,12 +29,15 @@ export const Hero = () => {
       {/* 3. CONTENIDO (Texto y Botones) */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
 
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-brand-bg mb-4 tracking-wide uppercase drop-shadow-lg animate-fade-down animate-duration-1000 animate-ease-out">
-          Pasión y <span className="text-brand-terracotta">Locura</span>
+        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+          {t('hero.title.prefix')} <br />
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-terracotta to-orange-500">
+            {t('hero.title.highlight')}
+          </span>
         </h1>
 
         <p className="font-sans text-gray-200 text-lg md:text-2xl max-w-3xl mb-10 font-light drop-shadow-md animate-fade-up animate-delay-300 animate-duration-1000">
-          Guías profesionales, seguridad certificada y la inmensidad de la cordillera esperándote.
+          {t('hero.subtitle')}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 animate-fade-up animate-delay-700 animate-duration-1000">
@@ -38,14 +45,14 @@ export const Hero = () => {
             onClick={() => window.open(getWhatsAppUrl(getReservationMessage()), '_blank')}
           >
             <LocationPointIcon className="w-5 h-5" />
-            Reservar Aventura
+            {t('hero.cta')}
           </Button>
           <Button
             variant="outline"
             className="text-lg px-8 py-3 border-brand-bg text-brand-bg hover:bg-brand-bg hover:text-brand-brown flex items-center gap-2"
             onClick={() => document.getElementById('experiencias')?.scrollIntoView({ behavior: 'smooth' })}>
             <LocationIcon className="w-5 h-5" />
-            Conocer Rutas
+            {t('hero.cta2')}
           </Button>
         </div>
 

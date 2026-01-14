@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { cn } from '@/utils/utils';
+import { useLanguage } from '@/context/languageContext';
 
 interface ActivityTabsProps {
   itinerary: string[];
@@ -9,15 +10,16 @@ interface ActivityTabsProps {
 
 export const ActivityTabs = ({ itinerary, equipment, included }: ActivityTabsProps) => {
   const [activeTab, setActiveTab] = useState<'itinerary' | 'equipment' | 'included'>('itinerary');
+  const { t } = useLanguage();
 
   return (
     <div>
       {/* Selector de Tabs */}
       <div className="flex border-b border-gray-200 mb-0 overflow-x-auto no-scrollbar justify-center">
         {[
-          { id: 'itinerary', label: 'Itinerario' },
-          { id: 'equipment', label: 'Equipamiento' },
-          { id: 'included', label: 'Qué Incluye' }
+          { id: 'itinerary', label: t('detail.tab.itinerary') },
+          { id: 'equipment', label: t('detail.tab.equipment') },
+          { id: 'included', label: t('detail.tab.included') }
         ].map((tab) => (
           <button
             key={tab.id}
@@ -36,11 +38,11 @@ export const ActivityTabs = ({ itinerary, equipment, included }: ActivityTabsPro
 
       {/* Contenido */}
       <div className=" bg-white p-4 rounded-b-2xl shadow-sm border border-t-0 border-gray-100 min-h-64">
-        
+
         {/* ITINERARIO */}
         {activeTab === 'itinerary' && (
           <div className="animate-fade-in space-y-8">
-            <h3 className="font-display text-2xl text-brand-brown font-bold text-center">Itinerario Propuesto</h3>
+            <h3 className="font-display text-2xl text-brand-brown font-bold text-center">{t('detail.section.itinerary')}</h3>
             <div className="relative border-l-2 border-brand-green/20 ml-3 space-y-8">
               {itinerary.map((item, i) => (
                 <div key={i} className="relative pl-8">
@@ -55,7 +57,7 @@ export const ActivityTabs = ({ itinerary, equipment, included }: ActivityTabsPro
         {/* EQUIPO */}
         {activeTab === 'equipment' && (
           <div className="animate-fade-in">
-            <h3 className="font-display text-2xl text-brand-brown font-bold mb-6 text-center">Lista de Equipo</h3>
+            <h3 className="font-display text-2xl text-brand-brown font-bold mb-6 text-center">{t('detail.section.equipment')}</h3>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {equipment.map((item, i) => (
                 <li key={i} className="flex items-center text-brand-text-gray p-2 hover:bg-gray-50 rounded-lg transition-colors">
@@ -72,7 +74,7 @@ export const ActivityTabs = ({ itinerary, equipment, included }: ActivityTabsPro
         {/* INCLUIDO */}
         {activeTab === 'included' && (
           <div className="animate-fade-in">
-            <h3 className="font-display text-2xl text-brand-brown font-bold mb-6 text-center">Incluido en el precio</h3>
+            <h3 className="font-display text-2xl text-brand-brown font-bold mb-6 text-center">{t('detail.section.included')}</h3>
             <div className="grid gap-4">
               {included.map((item, i) => (
                 <li key={i} className="flex items-start p-4 border border-gray-100 rounded-xl hover:border-brand-terracotta/30 hover:shadow-sm transition-all bg-white">

@@ -3,8 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Navbar } from '../organisms/navBar';
 import { Footer } from '../organisms/footer';
 import { activitiesData } from '../../data/activityData';
-
-// Componentes Refactorizados
+import { useLanguage } from '../../context/languageContext';
 import { ActivityGallery } from '../organisms/activityGallery';
 import { ActivityHeader } from '../molecules/activityHeader';
 import { ActivityInfoGrid } from '../molecules/activityInfoGrid';
@@ -16,6 +15,7 @@ export const ActivityDetail = () => {
   const navigate = useNavigate();
 
   const activity = activitiesData.find((a) => a.slug === slug);
+  const { language, t } = useLanguage();
 
   useEffect(() => {
     if (!activity) {
@@ -38,43 +38,43 @@ export const ActivityDetail = () => {
 
             {/* --- COLUMNA IZQUIERDA  --- */}
             <div className="lg:col-span-2">
-              
+
               {/* Header  */}
-              <ActivityHeader 
+              <ActivityHeader
                 category={activity.category}
-                title={activity.title}
-                location={activity.location}
+                title={activity.title[language]}
+                location={activity.location[language]}
               />
 
               {/* Descripción + Grid de Características + Tabs */}
               <div className="space-y-10">
                 <div className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-out">
-                  <h2 className="font-display text-2xl text-brand-brown font-bold mb-4 text-center">Sobre esta experiencia</h2>
+                  <h2 className="font-display text-2xl text-brand-brown font-bold mb-4 text-center">{t('detail.about_title')}</h2>
                   <p className="text-brand-text-gray leading-relaxed text-lg whitespace-pre-line text-center lg:text-left">
-                    {activity.fullDescription}
+                    {activity.fullDescription[language]}
                   </p>
 
-                  <ActivityInfoGrid 
-                    duration={activity.duration}
-                    difficulty={activity.difficulty}
-                    season={activity.season}
-                    altitude={activity.altitude}
+                  <ActivityInfoGrid
+                    duration={activity.duration[language]}
+                    difficulty={activity.difficulty[language]}
+                    season={activity.season[language]}
+                    altitude={activity.altitude ? activity.altitude[language] : 'N/A'}
                   />
                 </div>
 
-                <ActivityTabs 
-                  itinerary={activity.itinerary}
-                  equipment={activity.equipment}
-                  included={activity.included}
+                <ActivityTabs
+                  itinerary={activity.itinerary[language]}
+                  equipment={activity.equipment[language]}
+                  included={activity.included[language]}
                 />
               </div>
             </div>
 
             {/* --- COLUMNA DERECHA --- */}
             <div className="lg:col-span-1">
-              <BookingCard 
-                price={activity.price} 
-                title={activity.title}
+              <BookingCard
+                price={activity.price[language]}
+                title={activity.title[language]}
               />
             </div>
 
