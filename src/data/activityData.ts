@@ -42,7 +42,7 @@ export const activitiesData: Activity[] = [
     id: 101,
     slug: "escalada-mono-largo",
     category: "Escalada",
-    images: ["/Depo 2.jpg", "/Depo 3.jpg", "/Depo 4.jpg", "/Depo.jpg"],
+    images: ["/Depo 2.webp", "/Depo 3.webp", "/Depo 4.webp", "/Depo.webp"],
     
     title: {
       es: "Escalada: Vía de Mono Largo",
@@ -166,7 +166,7 @@ export const activitiesData: Activity[] = [
     id: 102,
     slug: "escalada-multi-largo",
     category: "Escalada",
-    images: ["/Multi.jpg", "/Multi 2.jpg", "/Multi 4.png", "/Multi 3.jpg", "/Multi 5.jpg", "/Multi 6.jpg"],
+    images: ["/Multi.webp", "/Multi 2.webp", "/Multi 4.png", "/Multi 3.webp", "/Multi 5.webp", "/Multi 6.webp"],
     
     title: {
       es: "Escalada: Vías Multi Largo",
@@ -291,7 +291,7 @@ export const activitiesData: Activity[] = [
     id: 1,
     slug: "cerro-banos",
     category: "Trekking",
-    images: ["/trekking.jpg", "/Cerros 3.jpg", "/Cerros 4.jpg"],
+    images: ["/trekking.webp", "/Cerros 3.webp", "/Cerros 4.webp"],
     
     title: {
       es: "Cerro Baños",
@@ -376,7 +376,7 @@ export const activitiesData: Activity[] = [
     id: 2,
     slug: "cerro-bayo",
     category: "Trekking",
-    images: ["/valle.jpg", "/Cerros 2.jpg", "/Cerros 25.jpg"],
+    images: ["/valle.webp", "/Cerros 2.webp", "/Cerros 25.webp"],
     
     title: {
       es: "Cerro Bayo",
@@ -443,7 +443,7 @@ export const activitiesData: Activity[] = [
     id: 3,
     slug: "cerro-nahuel",
     category: "Trekking",
-    images: ["/Cerros 24.jpg", "/Cerros 5.jpg", "/Cerros 6.jpg"],
+    images: ["/Cerros 24.webp", "/Cerros 5.webp", "/Cerros 6.webp"],
     
     title: {
       es: "Cerro Nahuel",
@@ -510,7 +510,7 @@ export const activitiesData: Activity[] = [
     id: 4,
     slug: "cerros-cabras-hormiguero",
     category: "Trekking",
-    images: ["/Cerros 11.jpg", "/Cerros 10.jpg", "/Cerros 9.jpg"],
+    images: ["/Cerros 11.webp", "/Cerros 10.webp", "/Cerros 9.webp"],
     
     title: {
       es: "Cerros Cabras & Cascada",
@@ -577,7 +577,7 @@ export const activitiesData: Activity[] = [
     id: 5,
     slug: "cerro-manos",
     category: "Trekking",
-    images: ["/Cerros 14.jpg", "/Cerros 13.jpg", "/Cerros 12.jpg"],
+    images: ["/Cerros 14.webp", "/Cerros 13.webp", "/Cerros 12.webp"],
     
     title: {
       es: "Cerro Manos",
@@ -644,7 +644,7 @@ export const activitiesData: Activity[] = [
     id: 6,
     slug: "cerro-camello",
     category: "Trekking",
-    images: ["/Cerros 17.jpg", "/Cerros 16.jpg", "/Cerros 15.jpg"],
+    images: ["/Cerros 17.webp", "/Cerros 16.webp", "/Cerros 15.webp"],
     
     title: {
       es: "Cerro Camello",
@@ -711,7 +711,7 @@ export const activitiesData: Activity[] = [
     id: 7,
     slug: "cerro-cocodrilo",
     category: "Trekking",
-    images: ["/Cerros 20.jpg", "/Cerros 19.jpg", "/Cerros 18.jpg"],
+    images: ["/Cerros 20.webp", "/Cerros 19.webp", "/Cerros 18.webp"],
     
     title: {
       es: "Cerro Cocodrilo",
@@ -778,7 +778,7 @@ export const activitiesData: Activity[] = [
     id: 8,
     slug: "cerro-comision",
     category: "Trekking",
-    images: ["/Cerros 23.jpg", "/Cerros 21.jpg", "/Cerros 22.jpg"],
+    images: ["/Cerros 23.webp", "/Cerros 21.webp", "/Cerros 22.webp"],
     
     title: {
       es: "Cerro Comisión",

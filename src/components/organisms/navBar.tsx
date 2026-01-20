@@ -55,7 +55,7 @@ export const Navbar = () => {
                             <img
                                 src="/logo-ascend.png"
                                 alt="Ascend Mza Logo"
-                                className={cn("w-auto object-contain transition-all duration-300", "-ml-2 md:-ml-6", isScrolled ? "h-16" : "h-20")}
+                                className={cn("w-auto object-contain transition-all duration-300", "-ml-2 md:-ml-6", isScrolled ? "h-18" : "h-24")}
                             />
                         </Link>
                     </div>
@@ -88,7 +88,7 @@ export const Navbar = () => {
 
             {/* MENÚ MÓVIL */}
             {isOpen && (
-                <div className="md:hidden bg-brand-bg border-t border-brand-brown/10 h-screen absolute w-full top-full left-0">
+                <div className="md:hidden bg-brand-bg/70 border-t border-brand-brown/10 h-screen absolute w-full top-full left-0">
                     <div className="px-4 pt-8 pb-3 space-y-6 flex flex-col items-center text-center">
                         <NavLink to="/" onClick={toggleMenu} className="text-2xl font-display">{t('nav.home')}</NavLink>
                         <NavLink to="/#experiencias" onClick={toggleMenu} className="text-2xl font-display">{t('nav.experiences')}</NavLink>

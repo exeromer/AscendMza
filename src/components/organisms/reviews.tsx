@@ -10,21 +10,21 @@ export const Reviews = () => {
     const reviews = [
         {
             id: 1,
-            name: "Juan Pérez",
-            role: "Trekking Aconcagua",
+            name: "Tomás Garcia",
+            role: "Cerro Camello",
             text: "Una experiencia inolvidable. Los guías fueron súper profesionales y la comida en el campamento base excelente.",
         },
         {
             id: 2,
             name: "Maria González",
-            role: "Valle de las Lágrimas",
+            role: "Cerro Bayo",
             text: "El paisaje es increíble, pero lo mejor fue la calidez del grupo humano. Volveré seguro.",
         },
         {
             id: 3,
-            name: "Carlos Ruiz",
-            role: "Cruce de los Andes",
-            text: "Dura exigencia física pero vale totalmente la pena. Ascend Mza se encargó de toda la logística impecablemente.",
+            name: "Carlos Ábrego",
+            role: "Vias Multi Largo",
+            text: "Dura exigencia física pero vale totalmente la pena. Ascend se encargó de toda la logística impecablemente.",
         }
     ];
 
