@@ -23,13 +23,13 @@ export const Footer = () => {
           <ul className="space-y-2 text-gray-300 text-xs md:text-sm flex flex-col items-center md:items-start">
             <li><NavLink to="/" className="text-gray-300 hover:text-white transition-all">{t('nav.home')}</NavLink></li>
             <li><NavLink to="/#experiencias" className="text-gray-300 hover:text-white transition-all">{t('footer.explore')}</NavLink></li>
-            <li><NavLink to="/#reviews" className="text-gray-300 hover:text-white transition-all">{t('footer.contact')}</NavLink></li>
+            <li><NavLink to="/#whyUs" className="text-gray-300 hover:text-white transition-all">{t('footer.proposal')}</NavLink></li>
           </ul>
         </div>
 
         {/* Columna 3: Contacto (Comparte fila en móvil) */}
         <div className="col-span-1 flex flex-col items-center text-center md:items-start md:text-left">
-          <h4 className="font-bold mb-4 uppercase text-sm md:text-lg tracking-widest text-brand-terracotta">{t('footer.contact')}</h4>
+          <h4 className="font-bold mb-4 uppercase text-sm md:text-lg tracking-widest text-brand-terracotta">{t('footer.proposal')}</h4>
           <ul className="space-y-2 text-gray-300 text-xs md:text-sm flex flex-col items-center md:items-start">
             <li className="flex items-center gap-2"><span>📧</span> info@ascend.com</li>
             <li className="flex items-center gap-2"><span>📱</span> +54 9 261 213 132</li>

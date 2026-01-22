@@ -42,7 +42,7 @@ export const translations: Translations = {
         // --- FOOTER ---
         'footer.tagline': 'Expertos en alta montaña. Transformamos desafíos en experiencias inolvidables.',
         'footer.explore': 'Explorar',
-        'footer.contact': 'Contacto',
+        'footer.proposal': 'Propuesta',
         'footer.rights': 'Todos los derechos reservados.',
 
         // --- ACTIVITY DETAIL (Fichas) ---
@@ -109,7 +109,7 @@ export const translations: Translations = {
         // --- FOOTER ---
         'footer.tagline': 'High mountain experts. We transform challenges into unforgettable experiences.',
         'footer.explore': 'Explore',
-        'footer.contact': 'Contact',
+        'footer.proposal': 'Proposal',
         'footer.rights': 'All rights reserved.',
 
         // --- ACTIVITY DETAIL ---
@@ -173,7 +173,7 @@ export const translations: Translations = {
         // --- FOOTER ---
         'footer.tagline': 'Especialistas em alta montanha. Transformamos desafios em experiências inesquecíveis.',
         'footer.explore': 'Explorar',
-        'footer.contact': 'Contato',
+        'footer.proposal': 'Proposta',
         'footer.rights': 'Todos os direitos reservados.',
 
         // --- ACTIVITY DETAIL ---

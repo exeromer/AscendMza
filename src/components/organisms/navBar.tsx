@@ -4,7 +4,7 @@ import { NavLink } from '../atoms/navLink';
 import { MenuIcon } from '../atoms/icons/menuIcon';
 import { CloseIcon } from '../atoms/icons/closeIcon';
 import { cn } from '../../utils/utils';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getWhatsAppUrl, getReservationMessage } from '../../utils/wpp';
 import { useLanguage } from '../../context/languageContext';
 import { LanguageSelector } from '../atoms/languageSelector';
@@ -13,6 +13,7 @@ export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
+    const location = useLocation();
     const handleReserveClick = () => {
         const url = getWhatsAppUrl(getReservationMessage());
         window.open(url, '_blank');
@@ -33,18 +34,21 @@ export const Navbar = () => {
         };
     }, []);
 
+    useEffect(() => {
+        setIsOpen(false);
+    }, [location]);
+
     return (
         <nav
             className={cn(
                 // Clase base
-                "fixed w-full z-50 transition-all duration-300 ease-in-out border-b",
-
-                // ESTADO 1: Scrolled
-                isScrolled
-                    ? "bg-brand-bg/95 backdrop-blur-md shadow-sm border-brand-brown/10 py-2"
-
-                    // ESTADO 2: Top
-                    : "bg-brand-bg/20 border-transparent py-4 backdrop-blur-none"
+                "fixed w-full z-60 transition-all duration-300 px-4 md:px-8 py-3",
+                // ESTADO 
+                isOpen
+                    ? "bg-brand-bg shadow-none py-4" // 1.Abierto
+                    : isScrolled
+                        ? "bg-white/95 backdrop-blur-md shadow-sm py-2" // 2. Scroll
+                        : "bg-brand-bg/15 border-transparent py-4 backdrop-blur-none" // 3. Top
             )}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,10 +65,9 @@ export const Navbar = () => {
                     </div>
 
                     {/* MENU DESKTOP */}
-                    <div className="hidden md:flex space-x-14 items-center">
+                    <div className="hidden md:flex space-x-10 items-center">
                         <NavLink to="/">{t('nav.home')}</NavLink>
                         <NavLink to="/#experiencias">{t('nav.experiences')}</NavLink>
-                        {/* El botón Nosotros */}
                         <NavLink to="/#reviews">{t('nav.about')}</NavLink>
                         <div className="flex items-center gap-4">
                             <LanguageSelector />
@@ -88,17 +91,28 @@ export const Navbar = () => {
 
             {/* MENÚ MÓVIL */}
             {isOpen && (
-                <div className="md:hidden bg-brand-bg/70 border-t border-brand-brown/10 h-screen absolute w-full top-full left-0">
-                    <div className="px-4 pt-8 pb-3 space-y-6 flex flex-col items-center text-center">
-                        <NavLink to="/" onClick={toggleMenu} className="text-2xl font-display">{t('nav.home')}</NavLink>
-                        <NavLink to="/#experiencias" onClick={toggleMenu} className="text-2xl font-display">{t('nav.experiences')}</NavLink>
-                        <NavLink to="/#whyUs" onClick={toggleMenu} className="text-2xl font-display">{t('nav.about')}</NavLink>
+                <div className="md:hidden bg-brand-bg border-t border-brand-brown/10 h-screen absolute w-full top-full left-0 ">
+                    <div className="px-4 pt-8 pb-3 space-y-4 flex flex-col items-center text-center">
+                        <div className="w-full max-w-xs bg-white/60 rounded-lg shadow-md p-4">
+                            <NavLink to="/" onClick={toggleMenu} className="text-2xl font-display">{t('nav.home')}</NavLink>
+                        </div>
+                        <div className="w-full max-w-xs bg-white/55 rounded-lg shadow-md p-4">
+                            <NavLink to="/#experiencias" onClick={toggleMenu} className="text-2xl font-display">{t('nav.experiences')}</NavLink>
+                        </div>
+                        <div className="w-full max-w-xs bg-white/50 rounded-lg shadow-md p-4">
+                            <NavLink to="/#reviews" onClick={toggleMenu} className="text-2xl font-display">{t('nav.about')}</NavLink>
+                        </div>
                         <div className="flex justify-center mt-4 mb-4">
                             <LanguageSelector />
                         </div>
-                        <Button className="w-full max-w-xs mt-8 py-3 text-lg">
-                            {t('nav.reserve')}
-                        </Button>
+                        <div className="mt-8">
+                            <Button
+                                onClick={handleReserveClick}
+                                className="text-lg px-18 py-4 shadow-xl"
+                            >
+                                {t('nav.reserve')}
+                            </Button>
+                        </div>
                     </div>
                 </div>
             )}

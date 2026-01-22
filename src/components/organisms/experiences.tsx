@@ -10,7 +10,7 @@ import { useLanguage } from '@/context/languageContext';
 export const Experiences = () => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const [activeCategory, setActiveCategory] = useState<'Trekking' | 'Escalada'>('Trekking');
-    const {language, t } = useLanguage();
+    const { language, t } = useLanguage();
 
     // Filtramos las actividades según la categoría seleccionada
     const filteredActivities = activitiesData.filter(
@@ -80,14 +80,22 @@ export const Experiences = () => {
                     </div>
                 </Reveal>
 
-                <div className="relative w-full min-h-[450px]:">
+                <div className="relative group/slider">
 
                     {/* BOTÓN IZQUIERDA (Oculto en móvil, visible en md) */}
-                    <button
+                           <button
                         onClick={() => scroll('left')}
-                        className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-50 bg-white p-3 rounded-full shadow-lg text-brand-brown hover:text-brand-terracotta transition-all border border-gray-100 hidden md:flex items-center justify-center cursor-pointer"
+                        className="absolute left-0 md:left-2 lg:-left-4 xl:-left-12 2xl:-left-20 top-1/2 -translate-y-1/2 z-50 bg-white p-2 sm:p-2.5 md:p-3 rounded-full shadow-lg text-brand-brown hover:text-brand-terracotta hover:bg-gray-50 transition-all border border-gray-100 hidden md:flex items-center justify-center cursor-pointer hover:scale-110"
                     >
-                        <ArrowLeftIcon className="w-6 h-6" />
+                        <ArrowLeftIcon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                    </button>
+
+                    {/* BOTÓN DERECHA (Oculto en móvil) */}
+                    <button
+                        onClick={() => scroll('right')}
+                        className="absolute right-0 md:right-2 lg:-right-4 xl:-right-12 2xl:-right-20 top-1/2 -translate-y-1/2 z-50 bg-white p-2 sm:p-2.5 md:p-3 rounded-full shadow-lg text-brand-brown hover:text-brand-terracotta hover:bg-gray-50 transition-all border border-gray-100 hidden md:flex items-center justify-center cursor-pointer hover:scale-110"
+                    >
+                        <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                     </button>
 
                     {/* ÁREA DE SCROLL */}
@@ -113,13 +121,6 @@ export const Experiences = () => {
                         ))}
                     </div>
 
-                    {/* BOTÓN DERECHA (Oculto en móvil) */}
-                    <button
-                        onClick={() => scroll('right')}
-                        className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-50 bg-white p-3 rounded-full shadow-lg text-brand-brown hover:text-brand-terracotta transition-all border border-gray-100 hidden md:flex items-center justify-center cursor-pointer"
-                    >
-                        <ArrowRightIcon className="w-6 h-6" />
-                    </button>
 
                 </div>
 

@@ -54,7 +54,7 @@ export const ActivityCard = ({ title, imageSrc, duration, slug, difficulty, seas
             /* Placeholder visible por defecto */
             <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-brand-brown/5 group-hover:bg-brand-brown/10 transition-colors">
               <MapIcon className="w-12 h-12 text-brand-brown/20 mb-2" />
-              <span className="text-xs font-bold text-brand-brown/30 uppercase tracking-widest">Ascend Mza</span>
+              <span className="text-xs font-bold text-brand-brown/30 uppercase tracking-widest">Ascend</span>
             </div>
           )}
         </div>
