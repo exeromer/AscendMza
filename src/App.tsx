@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react'; 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ScrollToTop } from './utils/scrollToTop';
-import { ScrollToBack } from './utils/scrollToBack';
+import { ScrollHandler } from './utils/scrollToBack';
 
 const Home = lazy(() => import('./components/templates/home').then(module => ({ default: module.Home })));
 const ActivityDetail = lazy(() => import('./components/templates/activityDetail').then(module => ({ default: module.ActivityDetail })));
@@ -18,8 +17,7 @@ const LoadingScreen = () => (
 function App() {
   return (
     <Router>
-      <ScrollToTop />
-      <ScrollToBack />
+      <ScrollHandler />       
       <Suspense fallback={<LoadingScreen />}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -29,5 +27,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;

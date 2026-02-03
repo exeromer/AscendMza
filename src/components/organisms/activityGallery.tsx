@@ -84,7 +84,7 @@ export const ActivityGallery = ({ images }: ActivityGalleryProps) => {
 
       {/* --- LIGHTBOX MODAL --- */}
       {isLightboxOpen && (
-        <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center animate-fade-in" onClick={closeLightbox}>
+        <div className="fixed inset-0 z-70 bg-black/95 backdrop-blur-sm flex items-center justify-center animate-fade-in " onClick={closeLightbox}>
           <button className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 z-50" onClick={closeLightbox}>
             <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
@@ -100,7 +100,7 @@ export const ActivityGallery = ({ images }: ActivityGalleryProps) => {
             onClick={(e) => e.stopPropagation()}
           />
 
-          <button className="absolute right-4 text-white/50 hover:text-white p-4 transition-colors z-50" onClick={nextImage}>
+          <button className="absolute right-4 text-white/50 hover:text-white p-4 transition-colors" onClick={nextImage}>
             <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
           </button>
 

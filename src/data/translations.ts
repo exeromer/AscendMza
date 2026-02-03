@@ -44,6 +44,7 @@ export const translations: Translations = {
         'footer.explore': 'Explorar',
         'footer.proposal': 'Propuesta',
         'footer.rights': 'Todos los derechos reservados.',
+        'footer.contact': 'Contacto',
 
         // --- ACTIVITY DETAIL (Fichas) ---
         'detail.price_label': 'Precio Total',
@@ -111,6 +112,7 @@ export const translations: Translations = {
         'footer.explore': 'Explore',
         'footer.proposal': 'Proposal',
         'footer.rights': 'All rights reserved.',
+        'footer.contact': 'Contact',
 
         // --- ACTIVITY DETAIL ---
         'detail.price_label': 'Total Price',
@@ -175,6 +177,7 @@ export const translations: Translations = {
         'footer.explore': 'Explorar',
         'footer.proposal': 'Proposta',
         'footer.rights': 'Todos os direitos reservados.',
+        'footer.contact': 'Contato',
 
         // --- ACTIVITY DETAIL ---
         'detail.price_label': 'Preço Total',

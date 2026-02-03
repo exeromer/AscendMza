@@ -112,7 +112,7 @@ export const Experiences = () => {
                                 <ActivityCard
                                     slug={activity.slug}
                                     title={activity.title[language]}
-                                    imageSrc={activity.images[0]} // Usamos la primera imagen del array
+                                    imageSrc={activity.images[0]} 
                                     duration={activity.duration[language]}
                                     difficulty={activity.difficulty[language]}
                                     season={activity.season[language]}
